@@ -65,6 +65,8 @@ def trainBOW(trainingPath):
 
 	classes = directories
 
+	vocabCounter = Counter()
+
 	# for each directory in the given path 
 	for directory in directories:
 		newPath = trainingPath + directory + '/'
@@ -92,8 +94,7 @@ def trainBOW(trainingPath):
 			
 		#print("class:: %s, \t three most common:: %s" %(directory, totalCounter.most_common(3)))
 
-		uniqWordsNum = len(totalCounter)
-		vocabSize += uniqWordsNum
+		vocabCounter += totalCounter
 
 		numOfWords = len(list(totalCounter.elements()))
 
@@ -102,6 +103,8 @@ def trainBOW(trainingPath):
 			(class-name, #-of-documents-in-the-class, #-of-words-in-the-class, BOW-of-the-class)
 		'''
 		featuresOfClasses.append((directory, length, numOfWords, totalCounter))
+
+	vocabSize = len(vocabCounter)
 
 '''
 	takes test path, feature quadruples of classes, and vocabulary size.
@@ -314,6 +317,8 @@ def trainBOWextra(trainingPath):
 	global vocabSizeEx
 	global featuresOfClassesEx
 
+	vocabCounter = Counter()
+
 	directories = []
 	for (dirpath, dirnames, filenames) in os.walk(trainingPath):
 		directories.extend(dirnames)
@@ -349,8 +354,7 @@ def trainBOWextra(trainingPath):
 
 		#print("class:: %s, \t three most common:: %s" %(directory, totalCounter.most_common(3)))
 			
-		uniqWordsNum = len(totalCounter)
-		vocabSizeEx += uniqWordsNum
+		vocabCounter += totalCounter
 
 		numOfWords = len(list(totalCounter.elements()))
 
@@ -360,6 +364,7 @@ def trainBOWextra(trainingPath):
 		'''
 		featuresOfClassesEx.append((directory, length, numOfWords, totalCounter))
 
+	vocabSizeEx = len(vocabCounter)
 		
 if __name__ == '__main__':
 	trainingPath = sys.argv[1]
