@@ -347,7 +347,7 @@ def trainBOWextra(trainingPath):
 		for functionalWord in functionalWords:
 			del totalCounter[functionalWord]
 
-		print("class:: %s, \t three most common:: %s" %(directory, totalCounter.most_common(3)))
+		#print("class:: %s, \t three most common:: %s" %(directory, totalCounter.most_common(3)))
 			
 		uniqWordsNum = len(totalCounter)
 		vocabSizeEx += uniqWordsNum
