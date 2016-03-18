@@ -13,7 +13,7 @@ This scripts takes two arguments. First of them is the path of training data set
       
 To run the program, write the following command from the same folder with the script:       
        
-     `python my_authorship_recognition_system.py /path/to/training/set /path/to/test/set`     
+     `python authorship_recognition_system.py /path/to/training/set /path/to/test/set`     
    
 ### Important Notes
 * fWords.txt file should be in the same folder with recognition python script.
