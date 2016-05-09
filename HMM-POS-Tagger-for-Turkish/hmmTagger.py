@@ -143,8 +143,9 @@ def writeFile(output, sentence, path):
 
 def findTAGS():
 	dirName = os.path.dirname(outputFile)
-	if not os.path.exists(dirName):
-		os.makedirs(dirName)
+	if dirName != "":
+		if not os.path.exists(dirName):
+			os.makedirs(dirName)
 
 	output = open(outputFile, 'w+')
 
