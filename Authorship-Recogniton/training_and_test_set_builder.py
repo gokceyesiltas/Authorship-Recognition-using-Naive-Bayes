@@ -16,7 +16,7 @@ for (dirpath, dirnames, filenames) in os.walk(dataPath):
 if not os.path.exists(trainingPath):
 	os.makedirs(trainingPath)
 
-# if test path doesnt exist, reates the directory
+# if test path doesnt exist, creates the directory
 if not os.path.exists(testPath):
 	os.makedirs(testPath)
 
@@ -35,11 +35,12 @@ for directory in directories:
 
 	# calculates training data size 
 	trainingSize = int(length * 0.6)
+	#print(directory, length, trainingSize, (length-trainingSize))
 
 	# copies training files into training data path
 	for i in range(0, trainingSize):
 		filePath = newPath + files[i]
-		fileTrainingPath = trainingPath + directory + '/' 
+		fileTrainingPath = os.path.join(trainingPath, directory) 
 		if not os.path.exists(fileTrainingPath):
 			os.makedirs(fileTrainingPath)
 		shutil.copy(filePath, fileTrainingPath)
@@ -47,7 +48,7 @@ for directory in directories:
 	# copies test files into test data path
 	for i in range(trainingSize, length):
 		filePath = newPath + files[i]
-		fileTestPath = testPath + directory + '/' 
+		fileTestPath = os.path.join(testPath, directory)
 		if not os.path.exists(fileTestPath):
 			os.makedirs(fileTestPath)
 		shutil.copy(filePath, fileTestPath)
