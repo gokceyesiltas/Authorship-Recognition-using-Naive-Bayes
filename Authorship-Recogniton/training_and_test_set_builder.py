@@ -39,7 +39,7 @@ for directory in directories:
 
 	# copies training files into training data path
 	for i in range(0, trainingSize):
-		filePath = newPath + files[i]
+		filePath = os.path.join(newPath, files[i])
 		fileTrainingPath = os.path.join(trainingPath, directory) 
 		if not os.path.exists(fileTrainingPath):
 			os.makedirs(fileTrainingPath)
@@ -47,7 +47,7 @@ for directory in directories:
 
 	# copies test files into test data path
 	for i in range(trainingSize, length):
-		filePath = newPath + files[i]
+		filePath = os.path.join(newPath, files[i])
 		fileTestPath = os.path.join(testPath, directory)
 		if not os.path.exists(fileTestPath):
 			os.makedirs(fileTestPath)
