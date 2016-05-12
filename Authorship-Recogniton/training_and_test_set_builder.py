@@ -22,7 +22,7 @@ if not os.path.exists(testPath):
 
 # for all directories in the path 
 for directory in directories:
-	newPath = dataPath + directory + '/'
+	newPath = os.path.join(dataPath, directory)
 
 	# finds files in the current directory
 	files = []
