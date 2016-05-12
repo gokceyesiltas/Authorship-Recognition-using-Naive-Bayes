@@ -69,7 +69,7 @@ def trainBOW(trainingPath):
 
 	# for each directory in the given path 
 	for directory in directories:
-		newPath = trainingPath + directory + '/'
+		newPath = os.path.join(trainingPath, directory)
 		files = []
 		for (dirpath, dirnames, filenames) in os.walk(newPath):
 			files = [i for i in filenames if i.endswith('.txt')]
@@ -82,7 +82,7 @@ def trainBOW(trainingPath):
 
 		# for each file in the current directory 
 		for i in range(0, length):
-			filePath = newPath + files[i]
+			filePath = os.path.join(newPath, files[i])
 			
 			file = open(filePath, encoding=fileEncoding)
 			words = tokenize(file)
@@ -135,7 +135,7 @@ def test(testPath, featuresOfClasses, vocabSize):
 
 		trueVSassigned = Counter()
 
-		newPath = testPath + directory + '/'
+		newPath = os.path.join(testPath, directory)
 		files = []
 		for (dirpath, dirnames, filenames) in os.walk(newPath):
 			files = [i for i in filenames if i.endswith('.txt')]
@@ -147,7 +147,7 @@ def test(testPath, featuresOfClasses, vocabSize):
 
 		# for each file in the current directory 
 		for i in range(0, length):
-			filePath = newPath + files[i]
+			filePath = os.path.join(newPath, files[i])
 			
 			file = open(filePath, encoding=fileEncoding)
 			words = tokenize(file)
@@ -326,7 +326,7 @@ def trainBOWextra(trainingPath):
 
 	# for each directory in the given path 
 	for directory in directories:
-		newPath = trainingPath + directory + '/'
+		newPath = os.path.join(trainingPath, directory)
 		files = []
 		for (dirpath, dirnames, filenames) in os.walk(newPath):
 			files = [i for i in filenames if i.endswith('.txt')]
@@ -338,7 +338,7 @@ def trainBOWextra(trainingPath):
 
 		# for each file in the current directory 
 		for i in range(0, length):
-			filePath = newPath + files[i]
+			filePath = os.path.join(newPath, files[i])
 			
 			file = open(filePath, encoding=fileEncoding)
 			words = tokenize(file)
